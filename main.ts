@@ -1,19 +1,35 @@
-function BitUpdate () {
-    for (let index = 0; index <= 23; index++) {
+function ResetBits (BitNum: number) {
+    for (let index = 0; index <= BitNum; index++) {
+        BitArray[index] = false
+    }
+}
+function BitCheck (BitCount: number) {
+    HasFailed = false
+    for (let index = 0; index <= BitCount; index++) {
         if (BitArray[index]) {
         	
         } else {
-        	
+            HasFailed = true
         }
     }
+    return HasFailed
 }
-let BitArray: number[] = []
+function BitUpdate () {
+    for (let index = 0; index <= 24; index++) {
+    	
+    }
+}
+let HasFailed = false
+let BitArray: boolean[] = []
+let Pause = false
 BitArray = []
 for (let index = 0; index < 25; index++) {
-    let list: boolean[] = []
-    list.push(false)
+    BitArray.push(false)
 }
 basic.showString("Bit Counting")
-basic.forever(function () {
-	
+Pause = true
+loops.everyInterval(100, function () {
+    if (Pause) {
+        BitUpdate()
+    }
 })
